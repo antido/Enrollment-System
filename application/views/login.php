@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<script src="<?php echo base_url(); ?>/assets/js/jquery-3.3.1.js"></script>
 	<script src="<?php echo base_url(); ?>/assets/js/bootstrap.js"></script>
 	<script src="<?php echo base_url(); ?>/assets/js/datatables.js"></script>
-	<title>Codeigniter</title>
+	<title>Enrollment System</title>
 </head>
 <body>
 	<main>
@@ -33,6 +33,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						</div>
 						<div class="form-group">
 							<input type="submit" class="form-control btn-primary" name="login" value="Login">
+						</div>
+					</form>
+					<form action="<?php echo site_url('user_controller/register_user'); ?>" method="POST">
+						<div class="form-group">
+							<input type="submit" class="form-control btn-secondary" name="register" value="Register">
 						</div>
 					</form>
 				</div>
