@@ -35,7 +35,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<input type="submit" class="form-control btn-primary" name="login" value="Login">
 						</div>
 					</form>
-					<form action="<?php echo site_url('user_controller/register_user'); ?>" method="POST">
+					<form action="<?php echo site_url('user_controller/register_form'); ?>" method="POST">
 						<div class="form-group">
 							<input type="submit" class="form-control btn-secondary" name="register" value="Register">
 						</div>

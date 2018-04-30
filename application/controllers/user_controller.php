@@ -2,9 +2,17 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User_Controller extends CI_Controller{
-	public function register_user()
+	public function register_form()
 	{
 		$this->load->view('register_form');
+	}
+
+
+	public function register_user()
+	{
+		$this->load->model('main_model');
+		$this->main_model->register_data();
+		redirect('main_controller');
 	}
 
 	public function add_form()
