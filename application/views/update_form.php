@@ -75,5 +75,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</div>
 		</div>
 	</main>
+
+	<footer class="footer mt-5">
+		<div class="container-fluid">
+			<p class="text-center">Enrollment System &copy; <?php echo date('Y'); ?></p>
+		</div>
+	</footer>
 </body>
 </html>

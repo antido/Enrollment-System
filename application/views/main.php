@@ -16,11 +16,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-			<a class="navbar-brand" href="<?php echo site_url('main_controller/home'); ?>">Code</a>
+			<a class="navbar-brand" href="<?php echo site_url('main_controller/home'); ?>">Student</a>
 			<div class="collapse navbar-collapse">
 				<ul class="navbar-nav"> 
 					<li class="nav-item">
 						<a class="nav-link active" href="<?php echo site_url('main_controller/home'); ?>">Home</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="subjectDropdown" data-toggle="dropdown">Subjects</a>
+						<div class="dropdown-menu" aria-labelledby="subjectDropdown">
+							<a class="dropdown-item" href="<?php echo site_url('subject_controller/subjects_offered'); ?>">Offered</a>
+							<a class="dropdown-item" href="#">Enrolled</a>
+							<a class="dropdown-item" href="#">Finished</a>
+						</div>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="<?php echo site_url('main_controller/logout'); ?>">Logout</a>
@@ -86,7 +94,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	<footer class="footer mt-5">
 		<div class="container-fluid">
-			<p class="text-center">Codeigniter User System &copy; <?php echo date('Y'); ?></p>
+			<p class="text-center">Enrollment System &copy; <?php echo date('Y'); ?></p>
 		</div>
 	</footer>
 
