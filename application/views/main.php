@@ -26,8 +26,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<a class="nav-link dropdown-toggle" href="#" id="subjectDropdown" data-toggle="dropdown">Subjects</a>
 						<div class="dropdown-menu" aria-labelledby="subjectDropdown">
 							<a class="dropdown-item" href="<?php echo site_url('subject_controller/subjects_offered'); ?>">Offered</a>
-							<a class="dropdown-item" href="#">Enrolled</a>
-							<a class="dropdown-item" href="#">Finished</a>
+							<a class="dropdown-item" href="<?php echo site_url('subject_controller/subjects_enrolled'); ?>">Enrolled</a>
+							<a class="dropdown-item" href="<?php echo site_url('subject_controller/subjects_finished'); ?>">Finished</a>
 						</div>
 					</li>
 					<li class="nav-item">
@@ -53,6 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<th>Action</th>
 					</tr>
 				</thead>
+				<tbody>
 				<?php foreach($data as $row) { ?>
 					<tr>
 						<td><?php echo $row->user_id; ?></td>
@@ -68,6 +69,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						</td>
 					</tr>
 				<?php } ?>
+				</tbody>
 			</table>
 		</div>
 	</main>
