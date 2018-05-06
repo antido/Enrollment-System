@@ -32,6 +32,7 @@ class Main_Model extends CI_Model{
 		);
 
 		$insertAccount = array(
+			'account_type' => 'Student',
 			'username' => $this->input->post('username'),
 			'password' => $this->input->post('password'),
 			'created_date' => date('Y-m-md H:i:s'),

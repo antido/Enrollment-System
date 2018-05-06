@@ -7,7 +7,6 @@ class User_Controller extends CI_Controller{
 		$this->load->view('register_form');
 	}
 
-
 	public function register_user()
 	{
 		$this->load->model('main_model');
