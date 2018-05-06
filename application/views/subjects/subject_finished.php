@@ -32,7 +32,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div class="row">
 				<div class="col-md-3"></div>
 				<div class="col-md-6">
-					<h2 class="text-center text-primary mb-5">Subjects</h2>
+					<h2 class="text-center text-primary mb-5">Taken Subjects</h2>
 					<div class="list-group">
 						<a href="#filipinoModal" data-toggle="modal" class="list-group-item list-group-item-action">Filipino</a>
 						<a href="#" class="list-group-item list-group-item-action">English</a>

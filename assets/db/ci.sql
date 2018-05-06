@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 01, 2018 at 01:50 PM
+-- Generation Time: May 06, 2018 at 04:42 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -30,6 +30,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `accounts` (
   `account_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `account_type` varchar(45) CHARACTER SET utf8 NOT NULL,
   `username` varchar(45) CHARACTER SET utf8 NOT NULL,
   `password` varchar(45) CHARACTER SET utf8 NOT NULL,
   `created_date` datetime NOT NULL,
@@ -40,9 +42,31 @@ CREATE TABLE `accounts` (
 -- Dumping data for table `accounts`
 --
 
-INSERT INTO `accounts` (`account_id`, `username`, `password`, `created_date`, `updated_date`) VALUES
-(1, 'user', 'pass', '2018-04-29 00:00:00', '2018-04-29 00:00:00'),
-(2, 'jose', 'jose12345', '0000-00-00 00:00:00', '2018-04-30 14:55:43');
+INSERT INTO `accounts` (`account_id`, `user_id`, `account_type`, `username`, `password`, `created_date`, `updated_date`) VALUES
+(1, 1, 'Admin', 'user', 'pass', '2018-04-29 00:00:00', '2018-04-29 00:00:00'),
+(2, 4, 'Student', 'jose', 'jose12345', '0000-00-00 00:00:00', '2018-04-30 14:55:43');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student_subject`
+--
+
+CREATE TABLE `student_subject` (
+  `student_subject_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `subject_id` int(11) NOT NULL,
+  `status` varchar(45) CHARACTER SET utf8 NOT NULL,
+  `created_date` datetime NOT NULL,
+  `updated_date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `student_subject`
+--
+
+INSERT INTO `student_subject` (`student_subject_id`, `user_id`, `subject_id`, `status`, `created_date`, `updated_date`) VALUES
+(1, 4, 1, 'Enrolled', '2018-05-06 00:00:00', '2018-05-06 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -95,7 +119,8 @@ INSERT INTO `users` (`user_id`, `first_name`, `middle_name`, `last_name`, `age`,
 (1, 'Christian', 'Lerry', 'Antido', 23, 'Male', '09296487564', 'Lower Fairview Baguio City', '2018-04-29 00:00:00', '2018-04-29 00:00:00'),
 (2, 'Kamille', 'Kaye', 'David', 23, 'Female', '09287653454', 'Middle Fairview Baguio City', '2018-04-29 13:47:43', '2018-04-29 13:47:43'),
 (3, 'Arianne', 'Thea', 'Espejo', 21, 'Female', '09286475634', 'Pacdal Proper Baguio City', '2018-04-29 13:49:01', '2018-04-29 14:15:24'),
-(4, 'Jose', 'Abad', 'Santos', 45, 'Male', '09286476341', 'Camp John Hay Baguio City', '2018-04-30 14:55:43', '2018-05-01 07:01:08');
+(4, 'Jose', 'Abad', 'Santos', 45, 'Male', '09286476341', 'Camp John Hay Baguio City', '2018-04-30 14:55:43', '2018-05-01 07:01:08'),
+(5, 'Reika', 'Lee', 'Eslao', 21, 'Female', '09286376231', 'Irisan Baguio City', '2018-05-04 16:42:41', '2018-05-04 16:42:41');
 
 --
 -- Indexes for dumped tables
@@ -106,7 +131,17 @@ INSERT INTO `users` (`user_id`, `first_name`, `middle_name`, `last_name`, `age`,
 --
 ALTER TABLE `accounts`
   ADD PRIMARY KEY (`account_id`),
-  ADD UNIQUE KEY `account_id` (`account_id`);
+  ADD UNIQUE KEY `account_id` (`account_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `student_subject`
+--
+ALTER TABLE `student_subject`
+  ADD PRIMARY KEY (`student_subject_id`),
+  ADD UNIQUE KEY `student_subject_id` (`student_subject_id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `subject_id` (`subject_id`);
 
 --
 -- Indexes for table `subjects`
@@ -133,6 +168,12 @@ ALTER TABLE `accounts`
   MODIFY `account_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `student_subject`
+--
+ALTER TABLE `student_subject`
+  MODIFY `student_subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `subjects`
 --
 ALTER TABLE `subjects`
@@ -142,7 +183,24 @@ ALTER TABLE `subjects`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `accounts`
+--
+ALTER TABLE `accounts`
+  ADD CONSTRAINT `accounts_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
+
+--
+-- Constraints for table `student_subject`
+--
+ALTER TABLE `student_subject`
+  ADD CONSTRAINT `student_subject_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
+  ADD CONSTRAINT `student_subject_ibfk_2` FOREIGN KEY (`subject_id`) REFERENCES `subjects` (`subject_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
