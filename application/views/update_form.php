@@ -7,15 +7,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/css/style.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/css/datatables.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 	<script src="<?php echo base_url(); ?>/assets/js/jquery-3.3.1.js"></script>
 	<script src="<?php echo base_url(); ?>/assets/js/bootstrap.js"></script>
 	<script src="<?php echo base_url(); ?>/assets/js/datatables.js"></script>
-	<title>Enrollment System</title>
+	<title>Enrollment System | Update</title>
 </head>
 <body>
 	<section>
-		<a class="btn btn-secondary mt-2 ml-2" href="<?php echo site_url('main_controller/home'); ?>">BACK</a>
+		<a class="btn btn-secondary mt-2 ml-2" href="<?php echo site_url('main_controller/home'); ?>"><i class="fas fa-arrow-alt-circle-left"> BACK</i></a>
 	</section>
 
 	<main>
@@ -24,9 +26,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<div class="col-md">
 				</div>
 				<div class="col-md">
-					<h2 class="text-center">Update Data</h2>
+					<h2 class="text-primary text-center"><i class="fas fa-user-edit"> Update Data</i></h2>
 					<form action="<?php echo site_url('user_controller/edit_user'); ?>" method="POST">
-						<div class="form-group">
+						<div class="form-group mt-5">
 							<input type="hidden" class="form-control" name="id" value="<?php echo $id; ?>">
 						</div>
 						<div class="form-group">

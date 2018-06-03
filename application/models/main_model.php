@@ -19,7 +19,7 @@ class Main_Model extends CI_Model{
 
 	public function register_data()
 	{
-		$insertInfo = array(
+		$insertUser = array(
 			'first_name' => $this->input->post('fName'),
 			'middle_name' => $this->input->post('mName'),
 			'last_name' => $this->input->post('lName'),
@@ -31,7 +31,11 @@ class Main_Model extends CI_Model{
 			'updated_date' => date('Y-m-d H:i:s')
 		);
 
+		$this->db->insert('users', $insertUser);
+		$id = $this->db->insert_id();
+
 		$insertAccount = array(
+			'user_id' => $id,
 			'account_type' => 'Student',
 			'username' => $this->input->post('username'),
 			'password' => $this->input->post('password'),
@@ -39,20 +43,21 @@ class Main_Model extends CI_Model{
 			'updated_date' => date('Y-m-d H:i:s')
 		);
 
-		$this->db->insert('users', $insertInfo);
 		$this->db->insert('accounts', $insertAccount);
 	}
 
-	public function get_data($info)
+	public function get_data()
 	{
-		$this->load->database('');
-		$data = $this->db->get('users', $info);
+		$this->db->select('*');
+		$this->db->from('accounts A');
+		$this->db->join('users U', 'A.user_id = U.user_id');
+		$data = $this->db->get();
 		return $data->result();
 	}
 
 	public function add_data()
 	{
-		$insert = array(
+		$insertUser = array(
 			'first_name' => $this->input->post('fName'),
 			'middle_name' => $this->input->post('mName'),
 			'last_name' => $this->input->post('lName'),
@@ -64,7 +69,19 @@ class Main_Model extends CI_Model{
 			'updated_date' => date('Y-m-d H:i:s')
 		);
 
-		$this->db->insert('users', $insert);
+		$this->db->insert('users', $insertUser);
+		$id = $this->db->insert_id();
+
+		$insertAccount = array(
+			'user_id' => $id,
+			'account_type' => 'Student',
+			'username' => $this->input->post('username'),
+			'password' => $this->input->post('password'),
+			'created_date' => date('Y-m-d H:i:s'),
+			'updated_date' => date('Y-m-d H:i:s')
+		);
+
+		$this->db->insert('accounts', $insertAccount);
 	}
 
 	public function edit_data($id)
@@ -93,6 +110,7 @@ class Main_Model extends CI_Model{
 
 	public function delete_data($id)
 	{
+		$this->db->delete('accounts', array('user_id' => $id));
 		$this->db->delete('users', array('user_id' => $id));
 	}
 }

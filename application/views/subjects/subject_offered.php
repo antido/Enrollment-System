@@ -7,7 +7,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/css/style.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/css/datatables.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 	<script src="<?php echo base_url(); ?>/assets/js/jquery-3.3.1.js"></script>
 	<script src="<?php echo base_url(); ?>/assets/js/bootstrap.js"></script>
 	<script src="<?php echo base_url(); ?>/assets/js/datatables.js"></script>

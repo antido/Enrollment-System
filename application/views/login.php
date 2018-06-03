@@ -7,11 +7,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/css/style.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/css/datatables.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 	<script src="<?php echo base_url(); ?>/assets/js/jquery-3.3.1.js"></script>
 	<script src="<?php echo base_url(); ?>/assets/js/bootstrap.js"></script>
 	<script src="<?php echo base_url(); ?>/assets/js/datatables.js"></script>
-	<title>Enrollment System</title>
+	<title>Enrollment System | Login</title>
 </head>
 <body>
 	<main>
@@ -21,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</div>
 				<div class="col-md">
 					<?php echo validation_errors(); ?>
-					<h2 class="text-center">Login</h2>
+					<h2 class="text-primary text-center"><i class="fas fa-sign-in-alt"> Login</i></h2>
 					<form action="<?php echo site_url('main_controller/verify_login'); ?>" method="POST">
 						<div class="form-group">
 							<label>Username:</label>

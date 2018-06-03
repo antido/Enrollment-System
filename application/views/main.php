@@ -7,16 +7,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/css/style.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/css/datatables.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 	<script src="<?php echo base_url(); ?>/assets/js/jquery-3.3.1.js"></script>
 	<script src="<?php echo base_url(); ?>/assets/js/bootstrap.js"></script>
 	<script src="<?php echo base_url(); ?>/assets/js/datatables.js"></script>
-	<title>Enrollment System</title>
+	<title>Enrollment System | Home</title>
 </head>
 <body>
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-			<a class="navbar-brand" href="<?php echo site_url('main_controller/home'); ?>">Student</a>
+			<a class="navbar-brand" href="<?php echo site_url('main_controller/home'); ?>"><i class="fas fa-school"> Enrollment</i> |</a>
 			<div class="collapse navbar-collapse">
 				<ul class="navbar-nav"> 
 					<li class="nav-item">
@@ -40,7 +42,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	<main>
 		<div class="container-fluid mt-5">
-			<a class="btn btn-success mb-2" href="<?php echo site_url('user_controller/add_form'); ?>">Add</a>
+			<a class="btn btn-success mb-2" href="<?php echo site_url('user_controller/add_form'); ?>"><i class="fas fa-user-plus" title="Add User"></i></a>
 			<table class="table table-striped table-bordered" id="dashboardTable">
 				<thead class="thead-dark">
 					<tr>
@@ -63,9 +65,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<td><?php echo $row->contact_number; ?></td>
 						<td><?php echo $row->home_address; ?></td>
 						<td>
-							<a class="btn btn-secondary" href="#viewModal" data-toggle="modal">View</a>
-							<a class="btn btn-primary" href="<?php echo site_url('user_controller/user_info/'.$row->user_id); ?>">Edit</a>
-							<a class="btn btn-danger" onclick="return confirm('Are you sure? ');" href="<?php echo site_url('user_controller/delete_user/'.$row->user_id); ?>">Delete</a>
+							<a class="btn btn-secondary" href="#viewModal" data-toggle="modal"><i class="fas fa-eye" title="View"></i></a>
+							<a class="btn btn-primary" href="<?php echo site_url('user_controller/user_info/'.$row->user_id); ?>"><i class="fas fa-pencil-alt" title="Update"></i></a>
+							<a class="btn btn-danger" onclick="return confirm('Are you sure? ');" href="<?php echo site_url('user_controller/delete_user/'.$row->user_id); ?>"><i class="fas fa-trash-alt" title="Delete"></i></a>
 						</td>
 					</tr>
 				<?php } ?>
@@ -74,11 +76,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</div>
 	</main>
 
+	<!-- Student Information View Modal -->
 	<div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-labelledby="viewModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="viewModalLabel">View Data</h5>
+					<h5 class="modal-title" id="viewModalLabel">Student Information</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -87,8 +90,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-					<button type="button" class="btn btn-success">Save</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 				</div>
 			</div>
 		</div>
