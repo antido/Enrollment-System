@@ -45,7 +45,7 @@ class Main_Controller extends CI_Controller{
 		if($this->session->userdata('logged_in')){
 			$session_data = $this->session->userdata('logged_in');
 			$this->load->model('main_model');
-			$info['data'] = $this->main_model->get_data('users');
+			$info['data'] = $this->main_model->get_data();
 			$this->load->view('main', $info);
 		}else{
 			redirect('main_controller');
