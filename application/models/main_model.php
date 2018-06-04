@@ -113,5 +113,15 @@ class Main_Model extends CI_Model{
 		$this->db->delete('accounts', array('user_id' => $id));
 		$this->db->delete('users', array('user_id' => $id));
 	}
+
+	public function get_activity_logs()
+	{
+		$this->db->select('*');
+		$this->db->from('activity_logs L');
+		$this->db->join('accounts A', 'L.account_id = A.account_id');
+		$this->db->join('users U', 'A.user_id = U.user_id');
+		$data = $this->db->get();
+		return $data->result();
+	}
 }
 ?>

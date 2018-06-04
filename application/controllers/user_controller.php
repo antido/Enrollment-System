@@ -65,5 +65,21 @@ class User_Controller extends CI_Controller{
 		$this->main_model->delete_data($id);
 		redirect('main_controller/home');
 	}
+
+	public function activity_logs()
+	{
+		$this->load->model('main_model');
+		$result['data'] = $this->main_model->get_activity_logs();
+		$this->load->view('logs', $result);
+	}
 }
 ?>
+
+
+
+
+
+
+
+
+

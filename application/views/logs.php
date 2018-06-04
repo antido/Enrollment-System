@@ -13,18 +13,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<script src="<?php echo base_url(); ?>/assets/js/jquery-3.3.1.js"></script>
 	<script src="<?php echo base_url(); ?>/assets/js/bootstrap.js"></script>
 	<script src="<?php echo base_url(); ?>/assets/js/datatables.js"></script>
-	<title>Enrollment System | Home</title>
+	<title>Enrollment System | Logs</title>
 </head>
 <body>
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<a class="navbar-brand" href="<?php echo site_url('main_controller/home'); ?>"><i class="fas fa-school"> Enrollment</i> |</a>
 			<div class="collapse navbar-collapse">
-				<ul class="navbar-nav"> 
+				<ul class="navbar-nav">
 					<li class="nav-item">
-						<a class="nav-link active" href="<?php echo site_url('main_controller/home'); ?>">Home</a>
+						<a class="nav-link" href="<?php echo site_url('main_controller/home'); ?>">Home</a>
 					</li>
-					<li class="nav-item dropdown">
+					<li class="nav-item dropdown"> 
 						<a class="nav-link dropdown-toggle" href="#" id="subjectDropdown" data-toggle="dropdown">Subjects</a>
 						<div class="dropdown-menu" aria-labelledby="subjectDropdown">
 							<a class="dropdown-item" href="<?php echo site_url('subject_controller/subjects_offered'); ?>">Offered</a>
@@ -32,10 +32,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<a class="dropdown-item" href="<?php echo site_url('subject_controller/subjects_finished'); ?>">Finished</a>
 						</div>
 					</li>
-					<li class="nav-item dropdown">
+					<li class="nav-item dropdown active"> 
 						<a class="nav-link dropdown-toggle" href="#" id="actionDropdown" data-toggle="dropdown">Action</a>
 						<div class="dropdown-menu" aria-labelledby="actionDropdown">
-							<a class="dropdown-item" href="<?php echo site_url('user_controller/activity_logs'); ?>">Activity Logs</a>
+							<a class="dropdown-item active" href="<?php echo site_url('user_controller/activity_logs'); ?>">Activity Logs</a>
 							<a class="dropdown-item" href="<?php echo site_url('main_controller/logout'); ?>">Logout</a>
 						</div>
 					</li>
@@ -46,59 +46,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	<main>
 		<div class="container-fluid mt-5">
-			<a class="btn btn-success mb-2" href="<?php echo site_url('user_controller/add_form'); ?>"><i class="fas fa-user-plus" title="Add User"></i></a>
-			<table class="table table-striped table-bordered" id="dashboardTable">
+			<table class="table table-striped table-bordered" id="activitiesTable">
 				<thead class="thead-dark">
 					<tr>
-						<th>ID</th>
-						<th>Name</th>
-						<th>Age</th>
-						<th>Gender</th>
-						<th>Contact Number</th>
-						<th>Home Address</th>
-						<th>Action</th>
+						<th>Activity ID</th>
+						<th>User Name</th>
+						<th>Activity Description</th>
+						<th>Activity Date</th>
 					</tr>
 				</thead>
 				<tbody>
-				<?php foreach($data as $row) { ?>
-					<tr>
-						<td><?php echo $row->user_id; ?></td>
-						<td><?php echo $row->first_name .' '. $row->middle_name .' '. $row->last_name; ?></td>
-						<td><?php echo $row->age; ?></td>
-						<td><?php echo $row->gender; ?></td>
-						<td><?php echo $row->contact_number; ?></td>
-						<td><?php echo $row->home_address; ?></td>
-						<td>
-							<a class="btn btn-secondary" href="#viewModal" data-toggle="modal"><i class="fas fa-eye" title="View"></i></a>
-							<a class="btn btn-primary" href="<?php echo site_url('user_controller/user_info/'.$row->user_id); ?>"><i class="fas fa-pencil-alt" title="Update"></i></a>
-							<a class="btn btn-danger" onclick="return confirm('Are you sure? ');" href="<?php echo site_url('user_controller/delete_user/'.$row->user_id); ?>"><i class="fas fa-trash-alt" title="Delete"></i></a>
-						</td>
-					</tr>
-				<?php } ?>
+					<?php foreach($data as $row) { ?>
+						<tr>
+							<td><?php echo $row->activity_log_id; ?></td>
+							<td><?php echo $row->first_name.' '.$row->middle_name.' '.$row->last_name; ?></td>
+							<td><?php echo $row->activity_description; ?></td>
+							<td><?php echo $row->activity_created_date; ?></td>
+						</tr>
+					<?php } ?>
 				</tbody>
 			</table>
 		</div>
 	</main>
-
-	<!-- Student Information View Modal -->
-	<div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-labelledby="viewModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="viewModalLabel">Student Information</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-		</div>
-	</div>
 
 	<footer class="footer mt-5">
 		<div class="container-fluid">
@@ -108,8 +77,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$('#dashboardTable').DataTable();
-		});
+			$('#activitiesTable').DataTable({
+				responsive: true
+			});
+		});	
 	</script>
 </body>
 </html>

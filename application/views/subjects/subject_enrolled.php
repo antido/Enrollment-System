@@ -17,8 +17,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
 	<header>
-		<nav class="navbar navbar-expand-lg navbar-dark bg-success">
-			<a class="navbar-brand" href="<?php echo site_url('subject_controller/subjects_enrolled'); ?>">Subjects</a>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<a class="navbar-brand" href="<?php echo site_url('subject_controller/subjects_enrolled'); ?>"><i class="fas fa-book"> Subjects</i> |</a>
 			<div class="collapse navbar-collapse">
 				<ul class="navbar-nav">
 					<li class="nav-item">

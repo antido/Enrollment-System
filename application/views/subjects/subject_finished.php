@@ -18,7 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-			<a class="navbar-brand" href="<?php echo site_url('subject_controller/subjects_finished'); ?>">Subjects</a>
+			<a class="navbar-brand" href="<?php echo site_url('subject_controller/subjects_finished'); ?>"><i class="fas fa-book"> Subjects</i> |</a>
 			<div class="collapse navbar-collapse">
 				<ul class="navbar-nav">
 					<li class="nav-item">
@@ -34,14 +34,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div class="row">
 				<div class="col-md-3"></div>
 				<div class="col-md-6">
-					<h2 class="text-center text-primary mb-5">Taken Subjects</h2>
-					<div class="list-group">
-						<a href="#filipinoModal" data-toggle="modal" class="list-group-item list-group-item-action">Filipino</a>
-						<a href="#" class="list-group-item list-group-item-action">English</a>
-						<a href="#" class="list-group-item list-group-item-action">Math</a>
-						<a href="#" class="list-group-item list-group-item-action">Science</a>
-						<a href="#" class="list-group-item list-group-item-action">History</a>
-						<a href="#" class="list-group-item list-group-item-action">Programming</a>
+					<h2 class="text-center text-success mb-5"><i class="fas fa-user-check"> Taken Subjects</i></h2>
+					<div class="list-group text-center">
+						<a href="#" class="list-group-item list-group-item-action list-group-item-dark subjects-label" data-attr="subject-major">Major Subjects</a>
+						<div class="list-group subject-completed" id="subject-major" style="display: none;">
+							<a href="#" class="list-group-item list-group-item-action">Programming I</a>	
+							<a href="#" class="list-group-item list-group-item-action">Programming II</a>
+							<a href="#" class="list-group-item list-group-item-action">IT Fundamentals</a>
+							<a href="#" class="list-group-item list-group-item-action">Networking</a>
+						</div>
+						<a href="#" class="list-group-item list-group-item-action list-group-item-dark subjects-label" data-attr="subject-minor">Minor Subjects</a>
+						<div class="list-group" id="subject-minor" style="display: none;">
+							<a href="#" class="list-group-item list-group-item-action" >Filipino</a>
+							<a href="#" class="list-group-item list-group-item-action">English</a>
+							<a href="#" class="list-group-item list-group-item-action">Math</a>
+							<a href="#" class="list-group-item list-group-item-action">Science</a>
+							<a href="#" class="list-group-item list-group-item-action">History</a>
+						</div>
+						<a href="#" class="list-group-item list-group-item-action list-group-item-dark subjects-label" data-attr="subject-elective">Electives</a>
+						<div class="list-group" id="subject-elective" style="display: none;">
+							<a href="#" class="list-group-item list-group-item-action">Technical Presentation</a>
+						</div>
 					</div>
 				</div>
 				<div class="col-md-3"></div>
@@ -77,9 +90,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$('.list-group-item').on('click', function(){
-				$('.active').removeClass('active');
-				$(this).addClass('active');
+			$('.subjects-label').on('click', function(){
+				var subject = $(this).data('attr');
+				$('#'+subject).slideToggle();
 			});
 		});
 	</script>
