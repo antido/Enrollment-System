@@ -39,11 +39,22 @@ class Main_Model extends CI_Model{
 			'account_type' => 'Student',
 			'username' => $this->input->post('username'),
 			'password' => $this->input->post('password'),
-			'created_date' => date('Y-m-md H:i:s'),
+			'created_date' => date('Y-m-d H:i:s'),
 			'updated_date' => date('Y-m-d H:i:s')
 		);
 
 		$this->db->insert('accounts', $insertAccount);
+
+		$accountId = $this->db->insert_id();
+
+		$registerLog = array(
+			'account_id' => $accountId,
+			'activity_description' => 'Registered Account',
+			'activity_created_date' => date('Y-m-d H:i:s'),
+			'activity_updated_date' => date('Y-m-d H:i:s')
+		);
+
+		$this->db->insert('activity_logs', $registerLog);
 	}
 
 	public function get_data()
