@@ -71,7 +71,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<td>
 							<a class="btn btn-secondary" href="#viewModal" data-toggle="modal"><i class="fas fa-eye" title="View"></i></a>
 							<a class="btn btn-primary" href="<?php echo site_url('user_controller/user_info/'.$row->user_id); ?>"><i class="fas fa-pencil-alt" title="Update"></i></a>
-							<a class="btn btn-danger" onclick="return confirm('Are you sure? ');" href="<?php echo site_url('user_controller/delete_user/'.$row->user_id); ?>"><i class="fas fa-trash-alt" title="Delete"></i></a>
+							<a class="btn btn-danger disabled" onclick="return confirm('Are you sure? ');" href="<?php echo site_url('user_controller/delete_user/'.$row->user_id); ?>"><i class="fas fa-trash-alt" title="Delete"></i></a>
 						</td>
 					</tr>
 				<?php } ?>

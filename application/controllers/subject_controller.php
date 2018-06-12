@@ -18,5 +18,13 @@ class Subject_Controller extends CI_Controller{
 	{
 		$this->load->view('subjects/subject_finished');
 	}
+
+	public function subject_info()
+	{
+		$subjId = $this->input->post('subjInfo');
+		$this->load->model('subject_model');
+		$result['info'] = $this->subject_model->subject_data($subjId);
+		$this->load->view('subjects/subject_info', $result);
+	}
 }
 ?>

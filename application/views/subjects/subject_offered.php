@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<td><?php echo $row->subject_description; ?></td>
 						<td><?php echo $row->subject_unit; ?></td>
 						<td>
-							<a class="btn btn-secondary" href="#viewSubjectModal" data-toggle="modal">View</a>
+							<a class="btn btn-secondary" href="#viewSubjectModal" data-toggle="modal" data-info="<?php echo $row->subject_id; ?>">View</a>
 							<a class="btn btn-success" href="">Enroll</a>
 						</td>
 					</tr>
@@ -64,12 +64,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content"> 
 				 <div class="modal-header">
-				 	<h5 class="modal-title" id="viewSubjectModalLabel">View Subject Data</h5>
+				 	<h5 class="modal-title text-primary" id="viewSubjectModalLabel"><i class="fas fa-book"> Subject Information</i></h5>
 				 	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				 		<span aria-hidden="true">&times;</span>
 				 	</button>
 				 </div>
-				 <div class="modal-body">
+				 <div class="modal-body text-secondary">
 				 	 
 				 </div>
 				 <div class="modal-footer">
@@ -88,6 +88,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$('#subjectOfferedTable').DataTable();
+
+			$('#viewSubjectModal').on('show.bs.modal', function(e){
+				var subjInfo = $(e.relatedTarget).data('info');
+				$.ajax({
+					type: 'POST',
+					url: '<?php echo site_url('subject_controller/subject_info'); ?>',
+					data: 'subjInfo=' + subjInfo,
+					success: function(data){
+						$('.modal-body').html(data);
+					}
+				});
+			});
 		});
 	</script>
 </body>

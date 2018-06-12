@@ -8,5 +8,14 @@ class Subject_Model extends CI_Model{
 		$data = $this->db->get('subjects', $info);
 		return $data->result();
 	}
+
+	public function subject_data($subjId)
+	{
+		$this->db->select('*');
+		$this->db->from('subjects');
+		$this->db->where('subject_id', $subjId);
+		$data = $this->db->get();
+		return $data->result();
+	}
 }
 ?>
